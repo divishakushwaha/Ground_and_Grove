@@ -1,9 +1,13 @@
 # Grounds & Groves
 
+
+
+
+
 A full-stack cafe website built as a group web development project. Customers can browse the menu, order for **home delivery or pickup**, **reserve a table**, and contact the cafe.
 
 | Layer | Technology |
-|---|---|
+
 | Frontend | HTML, CSS, vanilla JavaScript |
 | Backend | Node.js + Express (REST API) |
 | Database | SQLite (via `better-sqlite3`) |
@@ -28,7 +32,6 @@ Run the API checks with `npm test` (inside `backend/`).
 
 ## Project structure
 
-```
 grounds-and-groves/
 ├── frontend/
 │   ├── index.html              Home page
@@ -50,7 +53,6 @@ grounds-and-groves/
 │   └── DATABASE.md             ER diagram
 ├── CONTRIBUTING.md             Git workflow for the team
 └── README.md
-```
 
 ## Who built what
 
