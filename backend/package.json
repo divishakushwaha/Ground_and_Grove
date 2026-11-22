@@ -1,0 +1,17 @@
+{
+  "name": "grounds-and-grooves-backend",
+  "version": "1.0.0",
+  "description": "Tiny Express + SQLite API for orders, reservations and feedback",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "view": "node view.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.0.0",
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
