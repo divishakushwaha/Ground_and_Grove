@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grounds and Grooves | Coffee, food and good records</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#menu">Skip to the menu</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a href="#home" class="brand">Grounds and Grooves</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="main-nav" aria-label="Main">
+        <a href="#menu">Our menu</a>
+        <a href="#reserve">Book a table</a>
+        <a href="#feedback">Feedback</a>
+      </nav>
+      <button class="cart-btn" id="cart-toggle" type="button">Your order <span class="cart-count" id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <div class="server-banner" id="server-banner" role="status" hidden>
+    The cafe server is offline. You can still browse the menu, but orders, reservations and feedback cannot be saved.
+    Start it with <code>npm start</code> in the <code>backend</code> folder.
+  </div>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Slow coffee, good grooves.</h1>
+          <p>Single-origin brews, fresh bakes and a record always spinning. Order ahead for pickup or delivery, or save a table for the evening.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">Order from the menu</a>
+            <a class="btn btn-ghost" href="#reserve">Book a table</a>
+          </div>
+        </div>
+        <div class="record" aria-hidden="true">
+          <div class="record-disc"><div class="record-label"><span>G&amp;G</span></div></div>
+          <div class="record-arm"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Our menu</h2>
+            <p class="lead">Pick what you like and send it to the kitchen.</p>
+          </div>
+          <button class="btn btn-secondary" id="open-add" type="button">Add a menu item</button>
+        </div>
+        <div class="chips" id="category-chips" role="group" aria-label="Filter by category"></div>
+        <div class="menu-grid" id="menu-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="reserve">
+      <div class="container split">
+        <div class="split-copy">
+          <h2>Book a table</h2>
+          <p class="lead">Tell us when you are coming and how many of you there are. We will have the table ready.</p>
+          <p class="note">We are open daily, 8:00 to 22:00.</p>
+        </div>
+        <form class="card form" id="reservation-form" novalidate>
+          <div class="field">
+            <label for="res-name">Your name</label>
+            <input id="res-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="res-contact">Email or phone</label>
+            <input id="res-contact" name="contact" type="text" autocomplete="email" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="res-date">Date</label>
+              <input id="res-date" name="date" type="date" required>
+            </div>
+            <div class="field">
+              <label for="res-time">Time</label>
+              <input id="res-time" name="time" type="time" min="08:00" max="21:30" required>
+            </div>
+            <div class="field">
+              <label for="res-guests">Guests</label>
+              <input id="res-guests" name="guests" type="number" min="1" max="20" value="2" required>
+            </div>
+          </div>
+          <p class="form-error" id="reservation-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">Reserve this table</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="feedback">
+      <div class="container split">
+        <div class="split-copy">
+          <h2>How did we do?</h2>
+          <p class="lead">Your feedback goes straight to the team. Tell us what you loved and what we can improve.</p>
+        </div>
+        <form class="card form" id="feedback-form" novalidate>
+          <div class="field">
+            <label for="fb-name">Your name <span class="optional">(optional)</span></label>
+            <input id="fb-name" name="name" type="text" autocomplete="name">
+          </div>
+          <fieldset class="field rating">
+            <legend>Your rating</legend>
+            <div class="stars">
+              <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">&#9733;<span class="sr">5 stars</span></label>
+              <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">&#9733;<span class="sr">4 stars</span></label>
+              <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">&#9733;<span class="sr">3 stars</span></label>
+              <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">&#9733;<span class="sr">2 stars</span></label>
+              <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">&#9733;<span class="sr">1 star</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="fb-message">Your message</label>
+            <textarea id="fb-message" name="message" rows="4" required></textarea>
+          </div>
+          <p class="form-error" id="feedback-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">Send feedback</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>&copy; <span id="year"></span> Grounds and Grooves</span>
+      <span class="status" id="server-status"><span class="dot"></span><span id="server-status-text">Checking server...</span></span>
+    </div>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="cart-drawer" aria-label="Your order" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your order</h2>
+      <button class="icon-btn" id="cart-close" type="button" aria-label="Close your order">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <div id="order-success" class="success" hidden></div>
+      <ul class="cart-list" id="cart-list"></ul>
+      <p class="empty" id="cart-empty">Your order is empty. Add something from the menu.</p>
+      <form id="order-form" class="form" novalidate hidden>
+        <div class="cart-total"><span>Total</span><strong id="cart-total">&#8377;0</strong></div>
+        <div class="field">
+          <label for="ord-name">Your name</label>
+          <input id="ord-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="ord-phone">Phone number</label>
+          <input id="ord-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <fieldset class="field">
+          <legend>How do you want it?</legend>
+          <div class="seg">
+            <input type="radio" id="type-pickup" name="orderType" value="pickup" checked><label for="type-pickup">Pickup</label>
+            <input type="radio" id="type-delivery" name="orderType" value="delivery"><label for="type-delivery">Delivery</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="ord-notes">Notes <span class="optional">(optional)</span></label>
+          <textarea id="ord-notes" name="notes" rows="2" placeholder="Address for delivery, allergies, less sugar..."></textarea>
+        </div>
+        <p class="form-error" id="order-error" role="alert" hidden></p>
+        <button class="btn btn-primary" type="submit">Place order</button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Add menu item dialog -->
+  <dialog class="dialog" id="add-dialog" aria-labelledby="add-title">
+    <form id="add-form" class="form" novalidate>
+      <h2 id="add-title">Add a menu item</h2>
+      <div class="field">
+        <label for="add-name">Item name</label>
+        <input id="add-name" type="text" required>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="add-price">Price (&#8377;)</label>
+          <input id="add-price" type="number" min="0" step="1" required>
+        </div>
+        <div class="field">
+          <label for="add-category">Category</label>
+          <input id="add-category" type="text" list="category-list" placeholder="Coffee, Bakery..." required>
+          <datalist id="category-list"></datalist>
+        </div>
+      </div>
+      <div class="field">
+        <label for="add-image-url">Image link <span class="optional">(optional)</span></label>
+        <input id="add-image-url" type="text" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label for="add-image-file">Or upload a picture <span class="optional">(optional)</span></label>
+        <input id="add-image-file" type="file" accept="image/*">
+      </div>
+      <p class="form-error" id="add-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost-dark" type="button" id="add-cancel">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add to menu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
